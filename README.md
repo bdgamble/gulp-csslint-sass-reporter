@@ -1,45 +1,45 @@
-# gulp-csslint-sass-reporter
+# gulp-csslint-scss-reporter
 
-A console reporter for csslint that maps errors back to the original sass/scss files using sass/scss source maps.
+A console reporter for csslint that maps errors back to the original scss files using scss source maps.
 
 ## Installation
 
-Install `gulp-csslint-sass-reporter` as a development dependency.
+Install `gulp-csslint-scss-reporter` as a development dependency.
 
 ```bash
-npm install --save-dev gulp-csslint-sass-reporter
+npm install --save-dev gulp-csslint-scss-reporter
 ```
 
 `gulp-csslint`, `gulp-sourcemaps`, and `gulp-sass` should also be installed.
 
 ## Usage
 
-Sass source maps are required in order to map errors back onto the original `sass` or `scss` files. If sass source maps are not available, an error will be thrown.
+Scss source maps are required in order to map errors back onto the original `scss` files. If scss source maps are not available, an error will be thrown.
 
 ```javascript
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var csslint = require('gulp-csslint');
 var sourcemaps = require('gulp-sourcemaps');
-var sassReporter = require('gulp-csslint-sass-reporter');
+var scssReporter = require('gulp-csslint-scss-reporter');
 
 gulp.task('sass', function () {
-  return gulp.src('src/**/*.s+(a|c)ss')
+  return gulp.src('src/**/*.scss')
     .pipe(sourcemaps.init()) // sourcemaps are required
     .pipe(sass())
     .pipe(csslint())
-    .pipe(sassReporter())
+    .pipe(scssReporter())
     .pipe(gulp.dest('build'));
 });
 ```
 
 ## API
 
-### sassReporter()
+### scssReporter()
 
 Errors will be reported in all files and `@imports`.
 
-### sassReporter(pattern)
+### scssReporter(pattern)
 
 #### pattern
 
@@ -65,14 +65,14 @@ var gulp = require('gulp');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var csslint = require('gulp-csslint');
-var sassReporter = require('gulp-csslint-sass-reporter');
+var scssReporter = require('gulp-csslint-scss-reporter');
 
 gulp.task('sass', function () {
-  return gulp.src('src/**/*.s+(a|c)ss')
+  return gulp.src('src/**/*.scss')
     .pipe(sourcemaps.init()) // sourcemaps are required
     .pipe(sass())
     .pipe(csslint())
-    .pipe(sassReporter('src/**/*.s+(a|c)ss')) // errors in bower_components will be ignored
+    .pipe(sassReporter('src/**/*.scss')) // errors in bower_components will be ignored
     .pipe(gulp.dest('build'));
 });
 ```
@@ -87,16 +87,16 @@ var gulp = require('gulp');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var csslint = require('gulp-csslint');
-var sassReporter = require('gulp-csslint-sass-reporter');
+var scssReporter = require('gulp-csslint-scss-reporter');
 
 var shouldThrow = true;
 
 gulp.task('sass', function () {
-  return gulp.src('src/**/*.s+(a|c)ss')
+  return gulp.src('src/**/*.scss')
     .pipe(sourcemaps.init()) // sourcemaps are required
     .pipe(sass())
     .pipe(csslint())
-    .pipe(sassReporter())
+    .pipe(scssReporter())
     .on('error', function (err) {
       // decide whether to throw the error
       if (shouldThrow) {

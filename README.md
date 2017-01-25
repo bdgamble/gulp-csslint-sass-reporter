@@ -1,5 +1,7 @@
 # gulp-csslint-scss-reporter
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/bdgamble/gulp-csslint-scss-reporter.svg)](https://greenkeeper.io/)
+
 A console reporter for csslint that maps errors back to the original scss files using scss source maps.
 
 ## Installation
